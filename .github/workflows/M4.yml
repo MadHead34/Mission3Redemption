@@ -56,9 +56,13 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+      
+      - name: Install dependencies
+        run: dotnet restore
+        working-directory: Mission3/Mission3
 
       - name: Build with dotnet
-        run: dotnet build Mission3\Mission3.csproj --configuration Release
+        run: dotnet build --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
