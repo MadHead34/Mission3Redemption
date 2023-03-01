@@ -56,16 +56,12 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
-      
-      - name: Install dependencies
-        run: dotnet restore
-        working-directory: /home/runner/work/Mission3Redemption/Mission3Redemption/Mission3Redemption\Mission3
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build Mission3Redemption.sln --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish Mission3Redemption.sln -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
