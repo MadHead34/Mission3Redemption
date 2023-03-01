@@ -59,7 +59,7 @@ jobs:
       
       - name: Install dependencies
         run: dotnet restore
-        working-directory: Mission3Redemption\Mission3
+        working-directory: /home/runner/work/Mission3Redemption/Mission3Redemption/Mission3Redemption\Mission3
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
