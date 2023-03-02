@@ -65,7 +65,7 @@ jobs:
         run: dotnet test --logger "console;verbosity=normal" --no-restore
         
       - name: dotnet publish
-        run: dotnet publish Mission3Redemption.sln -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish Mission3Redemption.sln -c Release -o ${{env.AZURE_WEBAPP_PACKAGE_PATH}}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
