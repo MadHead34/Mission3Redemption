@@ -50,10 +50,6 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Setup VSTest.console.exe
-        uses: darenm/Setup-VSTest@v1.2
-
-
       - name: Set up dependency caching for faster builds
         uses: actions/cache@v3
         with:
