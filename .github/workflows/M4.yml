@@ -50,6 +50,10 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: Setup VSTest.console.exe
+        uses: darenm/Setup-VSTest@v1.2
+
+
       - name: Set up dependency caching for faster builds
         uses: actions/cache@v3
         with:
@@ -59,13 +63,13 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Build with dotnet
-        run: dotnet build ../Mission3\Mission3.csproj --configuration Release
+        run: dotnet build ../Mission3/Mission3.csproj --configuration Release
         
       - name: Test
         run: dotnet test --logger "console;verbosity=normal" --no-restore
         
       - name: dotnet publish
-        run: dotnet publish ../Mission3\Mission3.csproj -c Release -o ${{env.AZURE_WEBAPP_PACKAGE_PATH}}
+        run: dotnet publish ../Mission3/Mission3.csproj -c Release -o ${{env.AZURE_WEBAPP_PACKAGE_PATH}}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
