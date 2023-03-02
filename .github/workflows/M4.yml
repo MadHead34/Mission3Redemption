@@ -59,7 +59,10 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build Mission3Redemption.sln --configuration Release
-
+        
+      - name: Test
+        run: dotnet test --logger "console;verbosity=normal" --no-restore
+        
       - name: dotnet publish
         run: dotnet publish Mission3Redemption.sln -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
