@@ -27,10 +27,11 @@ env:
 on:
   push:
     branches: [ "master" ]
-  workflow_dispatch:
+    workflow_dispatch:
 
 permissions:
-  contents: read|write|none
+      packages: write
+      contents: read
 
 jobs:
   build:
