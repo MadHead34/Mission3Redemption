@@ -59,13 +59,13 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Build with dotnet
-        run: dotnet build Mission3Redemption/Mission3Redemption.sln --configuration Release
+        run: dotnet build Mission3Redemption.sln --configuration Release
         
       - name: Test
         run: dotnet test --logger "console;verbosity=normal" --no-restore
         
       - name: dotnet publish
-        run: dotnet publish Mission3Redemption/Mission3Redemption.sln -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish Mission3Redemption.sln -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -84,6 +84,12 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: .net-app
+          
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
