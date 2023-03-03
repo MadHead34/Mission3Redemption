@@ -30,3 +30,10 @@ claim and Turner reads the claim history and converts them based on the keyword 
 4. Enter the Content Type in Header
 5. Change the Body format to JSON and have them in raw and you can enter the input in the body
 6. Make sure you dotnet run without any other process interfering so that the code is running and you can send request
+
+# Github Action Flow
+1. Got The YAML File in the github/workflow directory
+2. Make changes in yaml and deploy them in VSCode with a commit message
+3. Click on Sync Changes if github is linked with VSCode
+4. Click on Action on Github and the job will start once commited the changes
+5. Th github action flow will deploy to Microsoft Azure so make sure you have the app service ready and test them on postman
